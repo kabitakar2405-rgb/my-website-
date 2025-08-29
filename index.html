@@ -1,39 +1,379 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html><html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home | NovaStudio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Modern Website</title>
+  <meta name="description" content="A clean, responsive, single‑file website template with modern UI." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #11131a;
+      --text: #e8ecf1;
+      --muted: #a9b1bd;
+      --brand: #6ae3e3;
+      --brand-2: #7c5cff;
+      --ring: rgba(122, 200, 255, 0.4);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --border: 1px solid rgba(255,255,255,.08);
+    }
+    :root[data-theme="light"]{
+      --bg:#f7f8fb; --card:#ffffff; --text:#0e1014; --muted:#4b5563; --brand:#0ea5e9; --brand-2:#7c3aed; --ring:rgba(14,165,233,.35); --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1200px 600px at 90% -10%, rgba(124,92,255,.15), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(106,227,227,.15), transparent 55%), var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.1rem;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;letter-spacing:.2px;border:none;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn.secondary{background:transparent;color:var(--text);border:var(--border)}
+    .chip{display:inline-flex;gap:.45rem;align-items:center;padding:.35rem .7rem;border-radius:999px;background:rgba(255,255,255,.08);border:var(--border);font-size:.75rem}
+    header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(8px);background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0));border-bottom:1px solid rgba(255,255,255,.06)}
+    :root[data-theme="light"] header.nav{background:rgba(255,255,255,.6)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .brand .logo{width:36px;height:36px;border-radius:11px;background:conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2), var(--brand));box-shadow:0 8px 20px rgba(124,92,255,.35)}
+    nav ul{display:flex;list-style:none;gap:1rem;margin:0;padding:0}
+    nav a{display:inline-block;padding:.55rem .8rem;border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.08)}
+    .nav-actions{display:flex;gap:.6rem;align-items:center}
+    .menu-btn{display:none}.hero{padding:7rem 0 4rem; position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(1.8rem, 3vw + 1rem, 3.4rem);line-height:1.15;margin:0 0 1rem;font-weight:800}
+.hero p{font-size:1.05rem;color:var(--muted);margin:0 0 1.8rem}
+.hero-card{background:linear-gradient(180deg, rgba(124,92,255,.15), rgba(255,255,255,.04));border:var(--border);border-radius:var(--radius-lg);padding:1.2rem;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
+.stat{padding:1rem;border-radius:14px;background:var(--card);border:var(--border);text-align:center}
+.stat b{font-size:1.25rem}
+
+.section{padding:3.5rem 0}
+.section h2{font-size:1.9rem;margin:0 0 .6rem}
+.section p.lead{color:var(--muted);margin-top:0}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.feature{background:var(--card);border:var(--border);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
+.feature h3{margin:.2rem 0 .4rem}
+
+.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.card{background:var(--card);border:var(--border);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:var(--border)}
+
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.price-card{background:var(--card);border:var(--border);border-radius:var(--radius-lg);padding:1.2rem;box-shadow:var(--shadow);position:relative}
+.price{font-size:2rem;font-weight:800}
+.badge{position:absolute;top:12px;right:12px}
+
+.faq details{background:var(--card);border:var(--border);border-radius:14px;padding:1rem;margin:.6rem 0}
+.faq summary{cursor:pointer;font-weight:600}
+
+.contact form{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
+.contact form .full{grid-column:1/-1}
+input,textarea{width:100%;padding:.9rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--text);outline:none}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{box-shadow:0 0 0 6px var(--ring);border-color:transparent}
+
+footer{padding:2.5rem 0;color:var(--muted)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:1rem}
+.footer-col h4{margin:.2rem 0 .6rem;color:var(--text)}
+.subtle{color:var(--muted)}
+
+/* Responsive */
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr 1fr}
+  .cards-2{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .pricing{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 700px){
+  nav ul{display:none}
+  .menu-btn{display:inline-flex}
+  .contact form{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+  </style>
 </head>
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">🌐 NovaStudio</div>
-      <nav>
+      <a href="#home" class="brand" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Nova<span class="subtle">Studio</span></span>
+      </a>
+      <nav aria-label="Primary">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <div class="nav-actions">
+        <button class="btn secondary" id="themeToggle" aria-label="Toggle theme">🌗 Theme</button>
+        <button class="btn menu-btn" id="openMenu" aria-expanded="false" aria-controls="mobileMenu">☰ Menu</button>
+      </div>
     </div>
-  </header>
-
-  <main class="section">
+    <div id="mobileMenu" hidden>
+      <div class="container" style="padding: .6rem 0 1rem;">
+        <nav aria-label="Mobile">
+          <ul style="display:grid;gap:.4rem;list-style:none;padding:0;margin:0;">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="chip">🚀 Super‑fast • SEO‑friendly • Responsive</span>
+        <h1>বাংলায় আধুনিক, স্মার্ট ও রেসপনসিভ ওয়েবসাইট — এক ফাইলে!</h1>
+        <p>এই টেমপ্লেটটা দিয়ে আপনি Portfolio, Agency, Startup, বা Small Business সাইট মুহূর্তে বানাতে পারবেন। কোডটা ভ্যানিলা HTML/CSS/JS—কোনো ফ্রেমওয়ার্ক লাগবে না।</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a href="#contact" class="btn">Get a Quote</a>
+          <a href="#projects" class="btn secondary">View Projects</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>50ms</b><div class="subtle">First paint</div></div>
+          <div class="stat"><b>100</b><div class="subtle">Lighthouse</div></div>
+          <div class="stat"><b>0 deps</b><div class="subtle">No build</div></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="Dashboard preview" style="width:100%;height:290px;object-fit:cover;border-radius:14px;border:var(--border)">
+        <div style="display:grid;grid-template-columns:1fr 1fr; gap:.7rem; margin-top:.7rem">
+          <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=800&auto=format&fit=crop" alt="UI shot" style="width:100%;height:120px;object-fit:cover;border-radius:12px;border:var(--border)">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop" alt="code shot" style="width:100%;height:120px;object-fit:cover;border-radius:12px;border:var(--border)">
+        </div>
+      </div>
+    </div>
+  </main>  <section id="about" class="section">
     <div class="container">
-      <h1>Welcome to NovaStudio</h1>
-      <p class="lead">বাংলায় আধুনিক, রেসপনসিভ মাল্টি-পেজ ওয়েবসাইট টেমপ্লেট।</p>
-      <p>এই সাইট থেকে আপনি আমাদের সম্পর্কে জানতে পারবেন, প্রজেক্ট দেখতে পারবেন, এবং কনট্যাক্ট করতে পারবেন।</p>
+      <h2>About Us</h2>
+      <p class="lead">We craft delightful, blazing‑fast experiences for web and mobile. From strategy to shipping, we handle the full stack with love and detail.</p>
+      <div class="features" role="list">
+        <article class="feature" role="listitem">
+          <h3>⚡ Performance first</h3>
+          <p>Optimized images, prefetch hints, and minimal JS so your site feels instant everywhere.</p>
+        </article>
+        <article class="feature" role="listitem">
+          <h3>🔒 Secure by default</h3>
+          <p>Best practices for content security policy, forms, and input validation included.</p>
+        </article>
+        <article class="feature" role="listitem">
+          <h3>♿ Accessible</h3>
+          <p>Semantic HTML, focus states, and ARIA attributes for inclusive UX.</p>
+        </article>
+      </div>
     </div>
-  </main>
+  </section>  <section id="services" class="section">
+    <div class="container">
+      <h2>Services</h2>
+      <p class="lead">Everything you need to launch and grow.</p>
+      <div class="cards-2">
+        <article class="card">
+          <h3>Design to Code</h3>
+          <p>Pixel‑perfect conversion of your Figma/PSD/XD to production‑ready HTML/CSS/JS.</p>
+          <ul>
+            <li>Responsive layouts</li>
+            <li>Design systems</li>
+            <li>Micro‑interactions</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Full‑stack Development</h3>
+          <p>APIs, dashboards, and integrations using Node/Express, Python/Flask or your stack of choice.</p>
+          <ul>
+            <li>REST/GraphQL</li>
+            <li>Auth & payments</li>
+            <li>CI/CD pipelines</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="lead">A quick peek at our recent work.</p>
+      <div class="gallery" aria-label="Project gallery">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop" alt="Project 1"/>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Project 2"/>
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Project 3"/>
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="Project 4"/>
+      </div>
+    </div>
+  </section>  <section id="pricing" class="section">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p class="lead">Simple, transparent plans. Cancel anytime.</p>
+      <div class="pricing">
+        <article class="price-card">
+          <span class="badge chip">Starter</span>
+          <div class="price">₹4,999</div>
+          <p>Single page website</p>
+          <ul>
+            <li>Responsive layout</li>
+            <li>Basic SEO</li>
+            <li>Email support</li>
+          </ul>
+          <a class="btn" href="#contact">Choose Plan</a>
+        </article>
+        <article class="price-card">
+          <span class="badge chip">Popular</span>
+          <div class="price">₹14,999</div>
+          <p>Multi‑page site + CMS</p>
+          <ul>
+            <li>Up to 8 pages</li>
+            <li>Blog integration</li>
+            <li>Priority support</li>
+          </ul>
+          <a class="btn" href="#contact">Choose Plan</a>
+        </article>
+        <article class="price-card">
+          <span class="badge chip">Pro</span>
+          <div class="price">₹34,999</div>
+          <p>Full custom build</p>
+          <ul>
+            <li>Custom components</li>
+            <li>API integrations</li>
+            <li>Analytics & A/B</li>
+          </ul>
+          <a class="btn" href="#contact">Choose Plan</a>
+        </article>
+      </div>
+    </div>
+  </section>  <section class="section faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <details>
+        <summary>কোডটা কীভাবে রান করবো?</summary>
+        <p>শুধু এই index.html ফাইলটা ব্রাউজারে খুললেই হবে। Android-এ WebCode / Acode / TrebEdit এও ওপেন করতে পারেন।</p>
+      </details>
+      <details>
+        <summary>Backend লাগবে?</summary>
+        <p>এই টেমপ্লেটটা pure front‑end। আপনি চাইলে সহজে Flask/Node backend যোগ করতে পারবেন।</p>
+      </details>
+      <details>
+        <summary>SEO বান্ধব?</summary>
+        <p>Semantic ট্যাগ, meta description, fast load—বেসিক সব আছে। চাইলে আরও schema যোগ করতে পারি।</p>
+      </details>
+    </div>
+  </section>  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="lead">Tell us about your idea. We’ll get back within 24 hours.</p>
+      <form id="contactForm" novalidate>
+        <div>
+          <label class="subtle" for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div>
+          <label class="subtle" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="full">
+          <label class="subtle" for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+        </div>
+        <div class="full" style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
+          <button class="btn" type="submit">Send Message</button>
+          <span id="formStatus" class="subtle" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </section>  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand"><div class="logo" aria-hidden="true"></div><span>Nova<span class="subtle">Studio</span></span></div>
+          <p class="subtle">© <span id="year"></span> NovaStudio. All rights reserved.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about" class="subtle">About</a><br/>
+          <a href="#services" class="subtle">Services</a><br/>
+          <a href="#projects" class="subtle">Projects</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#pricing" class="subtle">Pricing</a><br/>
+          <a href="#faq" class="subtle">FAQ</a><br/>
+          <a href="#contact" class="subtle">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <a class="subtle" href="#">Twitter</a><br/>
+          <a class="subtle" href="#">GitHub</a><br/>
+          <a class="subtle" href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
 
-  <footer>
-    <div class="container">© <span id="year"></span> NovaStudio. All rights reserved.</div>
-  </footer>
-  <script src="script.js"></script>
-</body>
+    // Theme toggle (persist in localStorage)
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if(saved){ root.setAttribute('data-theme', saved); }
+    themeToggle?.addEventListener('click', ()=>{
+      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', current);
+      localStorage.setItem('theme', current);
+    });
+
+    // Mobile menu
+    const openMenu = document.getElementById('openMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    openMenu?.addEventListener('click', ()=>{
+      const expanded = openMenu.getAttribute('aria-expanded') === 'true';
+      openMenu.setAttribute('aria-expanded', String(!expanded));
+      if(mobileMenu){ mobileMenu.hidden = expanded; }
+    });
+
+    // Contact form (front‑end validation + demo submit)
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = '';
+      const data = Object.fromEntries(new FormData(form).entries());
+      if(!data.name || !data.message || !emailRegex.test(data.email)){
+        status.textContent = 'Please fill all fields correctly.';
+        return;
+      }
+      // Fake network call
+      await new Promise(r=>setTimeout(r, 600));
+      status.textContent = 'Message sent ✓ (demo)';
+      form.reset();
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script></body>
 </html>
