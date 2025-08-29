@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | NovaStudio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">🌐 NovaStudio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>Welcome to NovaStudio</h1>
+      <p class="lead">বাংলায় আধুনিক, রেসপনসিভ মাল্টি-পেজ ওয়েবসাইট টেমপ্লেট।</p>
+      <p>এই সাইট থেকে আপনি আমাদের সম্পর্কে জানতে পারবেন, প্রজেক্ট দেখতে পারবেন, এবং কনট্যাক্ট করতে পারবেন।</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> NovaStudio. All rights reserved.</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
